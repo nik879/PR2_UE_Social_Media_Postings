@@ -11,7 +11,7 @@ public class Demo {
 
         posts.add(new Posting(12, "Niki", "nik879", LocalDateTime.now(), 120, 15, 260));
         posts.add(new Posting(36, "Max", "maxi_doe", LocalDateTime.of(2021,5,18,10,15), 280, 654, 4821));
-        posts.add(new Posting(18, "Susi", "susl", LocalDateTime.of(2018,4,13,12,15), 196, 465, 528));
+        posts.add(new Posting(18, "Susi", "susl", LocalDateTime.of(2018,4,13,12,15), 196, 465, 260));
         posts.add(new Posting(29, "Berta", "berta_cd", LocalDateTime.of(2016,1,12,10,15), 56, 64, 468));
         posts.add(new Posting(43, "Marie", "msmr", LocalDateTime.of(2021,12,12,8,45), 843, 465, 5468));
         posts.add(new Posting(45, "Doris", "dorli", LocalDateTime.of(2001,11,16,23,15), 5648, 564, 8468));
@@ -28,17 +28,30 @@ public class Demo {
 
         System.out.println("Sortiert nach ID" + "\n--------- \n");
         System.out.println(posts);
+        System.out.println("-----------\n\n");
 
         System.out.println("Sortiert nach Realname" + "\n--------- \n");
         Collections.sort(posts, new RealnameAscComparator());
         System.out.println(posts);
+        System.out.println("-----------\n\n");
 
         System.out.println("Sortiert nach DateTime" + "\n--------- \n");
         Collections.sort(posts, new DateTimeDescComparator());
         System.out.println(posts);
 
-        System.out.println("Sortiert nach Likes und Shares" + "\n--------- \n");
-        Collections.sort(posts, new LikesDescSharesDescComparator());
+        System.out.println("-----------\n\n");
+        System.out.println("Sortiert nach Views und Shares" + "\n--------- \n");
+        Collections.sort(posts, new ViewDescSharesAscComparator());
+        System.out.println(posts);
+
+        System.out.println("-----------\n\n");
+        System.out.println("Sortiert nach Likes per View" + "\n--------- \n");
+        Collections.sort(posts, new LikesPerViewAscComparator());
+        System.out.println(posts);
+
+        System.out.println("-----------\n\n");
+        System.out.println("Sortiert nach shares per likes" + "\n--------- \n");
+        Collections.sort(posts, new ShareLikeRatioDescComparator());
         System.out.println(posts);
 
     }
